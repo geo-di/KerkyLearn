@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="site.master.cs" Inherits="KerkyLearn.site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KerkyLearn</title>
+    <link href="style.css" rel="stylesheet" />
+    
+</head>
+<body style="padding-top: 2%;" class="animate">
+    <form id="form1" runat="server">
+        <nav class="overlay" id="top-menu">
+            <!--top menu items-->
+
+            <div id="navigationmenu">
+
+
+
+                <div class="overlay-content" id="navbar">
+                    <a href="/index.aspx">Home</a>
+                    <asp:Panel ID="PanelLink" runat="server" CssClass="panel">
+                        <a href="/dashboard.aspx">Dashboard</a>
+                        <a href="/statistics.aspx">Statistics</a>
+                    </asp:Panel>
+                    <a href="/index.aspx#footer">Who are we?</a>
+
+                    <div style="float: right">
+                        <asp:Label ID="Label1" runat="server" Text="Not Logged in."></asp:Label>
+                        <asp:Button ID="Button1" runat="server" CssClass="smallbtn" OnClick="Button1_Click" Text="Log Out" />
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </nav>
+
+        <div class="content-wrapper">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        
+
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function reveal() {
+                var reveals = document.querySelectorAll('.reveal');
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add('active');
+                    } else {
+                        reveals[i].classList.remove('active');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', reveal);
+        });
+    </script>
+    <script src="dashboard.js"></script>
+
+
+</body>
+
+</html>
